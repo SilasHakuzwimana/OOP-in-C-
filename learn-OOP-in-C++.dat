@@ -1,0 +1,161 @@
+# Object-Oriented Programming (OOP) in C++
+
+## Introduction
+Object-Oriented Programming (OOP) is a programming paradigm based on the concept of objects. It enables modularity, reusability, and scalability in software development. C++ is a powerful language that supports OOP principles.
+
+## Key OOP Concepts in C++
+### 1. **Classes and Objects**
+A class is a blueprint for creating objects. An object is an instance of a class.
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string brand;
+    int year;
+
+    void display() {
+        cout << "Brand: " << brand << ", Year: " << year << endl;
+    }
+};
+
+int main() {
+    Car car1;
+    car1.brand = "Toyota";
+    car1.year = 2020;
+    car1.display();
+    return 0;
+}
+```
+
+### 2. **Encapsulation**
+Encapsulation means restricting direct access to object data using access specifiers.
+- **Private:** Members are accessible only within the class.
+- **Public:** Members are accessible from anywhere.
+- **Protected:** Members are accessible in derived classes.
+```cpp
+class BankAccount {
+private:
+    double balance;
+public:
+    void setBalance(double amount) {
+        balance = amount;
+    }
+    double getBalance() {
+        return balance;
+    }
+};
+```
+
+### 3. **Inheritance**
+Inheritance allows one class to inherit properties and methods from another class.
+```cpp
+class Vehicle {
+public:
+    void start() {
+        cout << "Vehicle starting..." << endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void honk() {
+        cout << "Car honking..." << endl;
+    }
+};
+```
+
+### 4. **Polymorphism**
+Polymorphism allows methods to have different behaviors based on the object.
+- **Compile-time polymorphism (Function Overloading)**
+- **Run-time polymorphism (Function Overriding)**
+```cpp
+class Animal {
+public:
+    virtual void makeSound() {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void makeSound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+```
+
+### 5. **Abstraction**
+Abstraction hides implementation details and only shows necessary functionalities.
+```cpp
+class Shape {
+public:
+    virtual void draw() = 0; // Pure virtual function
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing Circle" << endl;
+    }
+};
+```
+
+### 6. **Constructors and Destructors**
+Constructors initialize objects, while destructors clean up resources.
+```cpp
+class Person {
+public:
+    string name;
+    Person(string n) {
+        name = n;
+        cout << "Constructor called for " << name << endl;
+    }
+    ~Person() {
+        cout << "Destructor called for " << name << endl;
+    }
+};
+```
+
+### 7. **Operator Overloading**
+Operators can be overloaded to work with user-defined data types.
+```cpp
+class Complex {
+public:
+    int real, imag;
+    Complex(int r, int i) : real(r), imag(i) {}
+    Complex operator+(const Complex& obj) {
+        return Complex(real + obj.real, imag + obj.imag);
+    }
+};
+```
+
+### 8. **Friend Function and Friend Class**
+A friend function can access private members of a class.
+```cpp
+class Box {
+private:
+    int width;
+public:
+    Box(int w) : width(w) {}
+    friend void printWidth(Box b);
+};
+
+void printWidth(Box b) {
+    cout << "Width: " << b.width << endl;
+}
+```
+
+### 9. **Templates (Generic Programming)**
+Templates allow writing generic code for multiple data types.
+```cpp
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+```
+
+## Conclusion
+OOP in C++ enhances code modularity, reusability, and maintainability. By mastering these concepts, you can build efficient and scalable applications.
+
